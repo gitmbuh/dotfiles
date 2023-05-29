@@ -2,14 +2,14 @@
 
 read -n1 -rep 'Would you like to install the packages? (Y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd yay-bin
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
     makepkg -si --noconfirm
     cd ..
-    yay -S --answerclean None --answerdiff None --needed - < pkg.lst
+    yay -S --noconfirm --needed - < pkg.lst
     cp -R ./assets/* ~/.config/
     cp -R ./Wallpapers ~/
-    chmod +x ~/.config/hypr/scripts/screensharing
+    chmod +x ~/.config/hypr/scripts/XDPH
 fi
 
 read -n1 -rep 'Would you like to enable SDDM autologin? (Y,n)' SDMM
